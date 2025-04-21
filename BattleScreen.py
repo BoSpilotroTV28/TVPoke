@@ -36,7 +36,7 @@ class BattleScreen(Screen):
         
         for move in self.trainers[self.selectTrainers].pokemon[0].moves:
             moveNameDmgCrit = move.name + " " + str(move.damage) + " " + move.type
-            self.elements.append(Label(moveSpot[p],20,10,moveNameDmgCrit))
+            self.elements.append(Label(moveSpot[p],10,10,moveNameDmgCrit))
             p+=1
 
 
