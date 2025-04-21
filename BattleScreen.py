@@ -28,17 +28,16 @@ class BattleScreen(Screen):
             poke = trainer.pokemon[0]
             if j < 1:    
                 self.elements.append(Image((x, y), 20, 20, poke.img))
-                self.elements.append(Label((x, y + 10), 20, 10, poke.name))
+                self.elements.append(Label((x, y + 10), 20, 10, poke.name + " " + str(poke.hp)))
                 j+=1
             else:
                 self.elements.append(Image((x+55, y+40), 20, 20, poke.img))
-                self.elements.append(Label((x+55, y+50), 20, 10, poke.name))
+                self.elements.append(Label((x+55, y+50), 20, 10, poke.name + " " + str(poke.hp)))
         
         for move in self.trainers[self.selectTrainers].pokemon[0].moves:
             moveNameDmgCrit = move.name + " " + str(move.damage) + " " + move.type
             self.elements.append(Label(moveSpot[p],10,10,moveNameDmgCrit))
             p+=1
-        self.elements.append(Label((10,50), 20, 10, poke.hp))
 
 
         
