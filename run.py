@@ -22,6 +22,8 @@ while True: ##Game loop
         battleScreen.addTrainers(pokemonList1, pokemonList2)
         screen = battleScreen
 
+        
+
 
 
 
