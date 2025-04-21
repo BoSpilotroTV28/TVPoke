@@ -38,6 +38,7 @@ class BattleScreen(Screen):
             moveNameDmgCrit = move.name + " " + str(move.damage) + " " + move.type
             self.elements.append(Label(moveSpot[p],10,10,moveNameDmgCrit))
             p+=1
+        self.elements.append(Label((10,50), 20, 10, poke.hp))
 
 
         

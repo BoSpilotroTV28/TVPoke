@@ -1,7 +1,7 @@
-from TVPoke.BaseClasses.PokeTypes import Grass
+from TVPoke.BaseClasses.PokeTypes import Psychic
 from TVPoke.BaseClasses.Move import Move
 
-class MrMime(Grass):
+class MrMime(Psychic):
     def __init__(self):
         moves = [
             Move("Pound", "Normal", 40),
