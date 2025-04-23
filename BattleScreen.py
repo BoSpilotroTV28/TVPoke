@@ -35,9 +35,28 @@ class BattleScreen(Screen):
                 self.elements.append(Label((x+55, y+50), 20, 10, poke.name + " " + str(poke.hp)))
         
         for move in self.trainers[self.selectTrainers].pokemon[0].moves:
-            moveNameDmgCrit = move.name + " " + str(move.damage) + " " + move.type
-            self.elements.append(Label(moveSpot[p],10,10,moveNameDmgCrit))
+            self.elements.append(MoveButton((moveSpot[p]), move))
             p+=1
+
+
+
+class MoveButton(Button):
+    def __init__(self, pos, move):
+        super().__init__(pos, 10, 10, move.name + " " + str(move.damage))
+        self.move = move
+
+    def onClick(self, screen):
+        screen.trainers[1].pokemon[0].takeDamage(self.move)
+        #check if fainted, check if someone won, blah blah blah
+        if screen.trainers[1].pokemon[0].hp <= 0:
+            screen.trainers[1].pokemon.pop(0)
+        if len(screen.trainers[1].pokemon) == 0:
+            print("trainer 1 wins!")
+            quit()
+        if len(screen.trainers[0].pokemon) == 0:
+            print("trainer 2 wins!")
+            quit()
+        screen.trainers.reverse()
 
 
         
