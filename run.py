@@ -23,7 +23,16 @@ while True: ##Game loop
         selectScreen.state["goTo"] = ""
         screen = battleScreen
 
-        
+    if screen == battleScreen:
+        if screen.trainers[1].pokemon[0].hp <= 0:
+            screen.trainers[1].pokemon.pop(0)
+            if len(screen.trainers[1].pokemon) == 0:
+                print("trainer 1 wins!")
+                quit()
+            if len(screen.trainers[0].pokemon) == 0:
+                print("trainer 2 wins!")
+                quit()
+            screen.trainers.reverse()    
 
 
 
