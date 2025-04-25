@@ -7,11 +7,12 @@ class BattleScreen(Screen):
         super().__init__(window, (25, 255, 40))
         self.backGroundElements = [Image((50, 50), 100, 100, "./imgs/battleground.JPG")]
         self.selectTrainers=0
+        self.goTo = ""
 
     def addTrainers(self, trainer1Poke, trainer2Poke):
         self.trainers = [
-            Trainer(trainer1Poke),
-            Trainer(trainer2Poke)
+            Trainer(trainer1Poke, 1),
+            Trainer(trainer2Poke, 2)
         ]
         
     def elementsToDisplay(self):
@@ -47,6 +48,12 @@ class MoveButton(Button):
 
     def onClick(self, screen):
         screen.trainers[1].pokemon[0].takeDamage(self.move)
+        if screen.trainers[1].pokemon[0].hp <= 0:
+            screen.trainers[1].pokemon.pop(0)
+            if len(screen.trainers[1].pokemon) == 0:
+                screen.trainers.pop(1)
+                screen.goTo = "WIN"
+        screen.trainers.reverse()
         #check if fainted, check if someone won, blah blah blah
 
 
